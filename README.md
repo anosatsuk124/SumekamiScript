@@ -23,7 +23,7 @@ SumekamiScript is an unsafe and low-level scripting language that works in any e
 
 ## Naming
 
-`SumekamiScript`'s correct spelling is that the first letters of `sumekami` and `script` are capitalized, and no spaces require between them.
+`SumekamiScript`'s correct spelling is that the first letters of `sumekami` and `script` are capitalized, and no spaces required between them.
 
 ### `sumekami` comes from
 
