@@ -1,17 +1,30 @@
 Sumekami = { Sexpr* }
 
-Sexpr = { List | Literal | Symbol }
+Sexpr = { List | Literal | Symbol | Operator }
 
 List = { "(" ~ Sexpr* ~ ")" }
 
-Literal = { String | Number }
+Literal = { String | Char | Number }
 
 String =  _{ PUSH(DoubleQuote) ~ StringValue ~ POP }
 StringValue = { (!PEEK ~ ANY)* }
 DoubleQuote = _{ "\"" }
 
-Symbol = @{ ASCII_ALPHANUMERIC+ }
-Number = @{ ASCII_DIGIT+ }
+Char =  _{ PUSH(SingleQuote) ~ CharValue ~ POP }
+CharValue = { ANY }
+SingleQuote = _{ "\'" }
+
+Symbol = @{ ASCII_ALPHA ~ ASCII_ALPHANUMERIC+ }
+
+Number = { HexNumber | OctNumber | BinNumber | DecNumber }
+HexNumber = @{ "0x" ~ ASCII_HEX_DIGIT+ }
+OctNumber = @{ "0o" ~ ASCII_OCT_DIGIT+ }
+BinNumber = @{ "0b" ~ ASCII_BIN_DIGIT+ }
+DecNumber = @{ ASCII_DIGIT+ }
+
+Operator = { PtrOperator | RefOperator }
+PtrOperator = { "*" }
+RefOperator = { "&" }
 
 COMMENT = _{ COMMENT_MARKER ~ COMMENT_CONTENT ~ NEWLINE}
 COMMENT_CONTENT = { (!NEWLINE ~ ANY)* }

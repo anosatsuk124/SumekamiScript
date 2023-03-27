@@ -1,5 +1,5 @@
 use pest_derive::Parser;
 
 #[derive(Parser)]
-#[grammar = "grammar.pest"] // relative to src
+#[grammar = "grammar.pest"]
 pub struct Sumekami;
