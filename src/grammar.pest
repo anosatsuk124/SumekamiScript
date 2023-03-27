@@ -1,12 +1,12 @@
 Sumekami = { Sexpr* }
 
-Sexpr = { List | Literal }
+Sexpr = { List | Literal | Symbol }
 
 List = { "(" ~ Sexpr* ~ ")" }
 
-Literal = { String | Symbol | Number }
+Literal = { String | Number }
 
-String =  _{PUSH(DoubleQuote) ~ StringValue ~ POP }
+String =  _{ PUSH(DoubleQuote) ~ StringValue ~ POP }
 StringValue = { (!PEEK ~ ANY)* }
 DoubleQuote = _{ "\"" }
 
