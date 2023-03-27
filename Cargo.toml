@@ -8,3 +8,12 @@ edition = "2021"
 [dependencies]
 pest = "2.5.6"
 pest_derive = "2.5.6"
+anyhow = "1.0"
+include_dir = "0.7.3"
+
+[features]
+default = ["pest/default", "pest_derive/default", "anyhow/default"]
+no_std = []
+
+[profile.dev]
+panic = "abort"
