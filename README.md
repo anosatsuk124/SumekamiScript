@@ -33,7 +33,7 @@ SumekamiScript is an unsafe and low-level scripting language that works in any e
 > 2. (regional) deity
 >    [ONCOJ Dictionary](https://oncoj.orinst.ox.ac.uk/cgi-bin/oncoj_dictionary.sh?search=L050218&part=n)
 
-So if you use this language, you shell get mighty power like deities...
+So if you use this language, you shall get mighty power like deities...
 
 ## LICENSE
 
