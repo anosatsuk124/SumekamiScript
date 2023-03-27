@@ -1,0 +1,19 @@
+Sumekami = { Sexpr* }
+
+Sexpr = { List | Literal }
+
+List = { "(" ~ Sexpr* ~ ")" }
+
+Literal = { String | Symbol | Number }
+
+String =  _{PUSH(DoubleQuote) ~ StringValue ~ POP }
+StringValue = { (!PEEK ~ ANY)* }
+DoubleQuote = _{ "\"" }
+
+Symbol = @{ ASCII_ALPHANUMERIC+ }
+Number = @{ ASCII_DIGIT+ }
+
+COMMENT = _{ COMMENT_MARKER ~ COMMENT_CONTENT ~ NEWLINE}
+COMMENT_CONTENT = { (!NEWLINE ~ ANY)* }
+COMMENT_MARKER = { ";" }
+WHITESPACE = _{ " " | "\t" | NEWLINE }
