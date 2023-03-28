@@ -1,12 +1,14 @@
 Sumekami = _{ SOI ~ Sexpr* ~ EOI }
 
-Sexpr = { List | Literal | Symbol | Operator | TypeAnnotation }
+Sexpr = { List | Literal | Lambda | Operator }
 
 List = { "(" ~ Sexpr* ~ ")" }
 
-Literal = { String | Char | Number }
-
+Lambda = { ImmutableKeyword? ~ Symbol ~ TypeAnnotation? }
 TypeAnnotation = { ":" ~ Symbol }
+ImmutableKeyword = { "!" }
+
+Literal = { String | Char | Number }
 
 String =  _{ PUSH(DoubleQuote) ~ StringValue ~ POP }
 StringValue = { (!PEEK ~ ANY)* }
@@ -16,7 +18,7 @@ Char =  _{ PUSH(SingleQuote) ~ CharValue ~ POP }
 CharValue = { ANY }
 SingleQuote = _{ "\'" }
 
-Symbol = @{ ASCII_ALPHA ~ ASCII_ALPHANUMERIC+ }
+Symbol = @{ ASCII_ALPHA ~ ASCII_ALPHANUMERIC* }
 
 Number = { HexNumber | OctNumber | BinNumber | DecNumber }
 HexNumber = @{ "0x" ~ ASCII_HEX_DIGIT+ }
