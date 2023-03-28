@@ -1,10 +1,10 @@
 Sumekami = _{ SOI ~ Sexpr* ~ EOI }
 
-Sexpr = { List | Literal | Lambda | Operator }
+Sexpr = { List | Literal | Bind | Operator }
 
 List = { "(" ~ Sexpr* ~ ")" }
 
-Lambda = { ImmutableKeyword? ~ Symbol ~ TypeAnnotation? }
+Bind = { ImmutableKeyword? ~ Symbol ~ TypeAnnotation? }
 TypeAnnotation = { ":" ~ Symbol }
 ImmutableKeyword = { "!" }
 
